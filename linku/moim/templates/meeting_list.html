@@ -5,6 +5,7 @@
         {{ meeting.maker }} <br>
         {{ meeting.place }} <br>
         {{ meeting.start_time|date:"m/d H:i" }} <br>
+        <img src = {{ meeting.image_path.storage.base_url }}{{ meeting.image_path }} /> <br>
         {{ meeting.distance_near_univ }} <br>
         {{ meeting.price_range }} <br>
         <button onclick="location.href='/meetings/{{ meeting.id }}/apply'">신청하기</button><br>

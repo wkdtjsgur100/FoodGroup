@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
 
 import pytest
+from django.conf import settings
 
 ROOT_URL_DEVELOP = "http://localhost:8000"
 
@@ -50,6 +51,9 @@ def test_first_page_cards_title(browser):
     assert '02/22 21:52' in browser.page_source
 
     # 규카츠가 맛있게 보이는 사진
+    images = browser.find_elements_by_tag_name("img")
+    assert ROOT_URL_DEVELOP + settings.MEDIA_URL + "kyukachu_08.jpg" == images[0].get_attribute("src")
+
     # 고려대학교 10km 이내(가까운 대학교와의 거리)
     assert '고려대학교 10km 이내' in browser.page_source
 
@@ -69,6 +73,7 @@ def test_first_page_cards_title(browser):
     # 02/22 22:22 (시작 시간)
     assert '02/22 22:22' in browser.page_source
     # 우동이 맛깔스럽게 보이는 사진
+    assert ROOT_URL_DEVELOP + settings.MEDIA_URL + "udong.jpg" == images[1].get_attribute("src")
     # 이화여자대학교 10km 이내(가까운 대학교와의 거리)
     assert '이화여자대학교 10km 이내' in browser.page_source
     # 5,000원~10,000원(가격대)

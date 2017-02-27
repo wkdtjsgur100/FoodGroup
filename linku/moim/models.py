@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Meeting(models.Model):
@@ -6,7 +7,8 @@ class Meeting(models.Model):
     name = models.TextField()
     place = models.TextField()
     start_time = models.DateTimeField()
-    image_path = models.ImageField(blank=True)
+    image_path = models.ImageField(upload_to='media/')
+
     distance_near_univ = models.TextField()
     price_range = models.TextField()
 
