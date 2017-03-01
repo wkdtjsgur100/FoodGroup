@@ -125,3 +125,4 @@ def test_redirect_to_homepage_after_applying_post_request(client):
 
     assert response.status_code == 302
     assert '/' == response.url
+
